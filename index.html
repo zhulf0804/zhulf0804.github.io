@@ -209,26 +209,6 @@
         </li>
       
         
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
@@ -357,112 +337,19 @@
       
         
           
-            <h2><strong>矩阵SVD分解的理论基础</strong></h2>
-<p>首先，我们先说明什么是矩阵的奇异值分解（single value decomposition），简称SVD。</p>
-<p>给定一个矩阵$A \in R^{m \times n}$, 设它的秩为r，则它具有以下的分解形式
+          矩阵SVD分解的理论基础
+首先，我们先说明什么是矩阵的奇异值分解（single value decomposition），简称SVD。
+给定一个矩阵$A \in R^{m \times n}$, 设它的秩为r，则它具有以下的分解形式
 $$ A_{m \times n} = U_{m \times m} \Sigma_{m \times n} V_{n \times n}^T $$
-其中，U是正交矩阵，其列向量是$ AA^T $的单位特征向量，V 也是正交矩阵，其列向量是对应的$A^TA$的单位特征向量，$\Sigma$具有下述的形式
-$$\Sigma = \left( \begin{array}{cc}
-\Sigma_1 &amp; O \\
-O &amp; O\end{array} \right)$$
-且$\Sigma_1 = diag(\sigma_1,\sigma_2,\ldots,\sigma_r)$，r是矩阵A的秩，$\sigma_i(i=1,2,\ldots,r)$ 是矩阵$AA^T$ （或$A^TA$）的非零特征值的正平方根，也叫做A的<strong><em>奇异值</em></strong>，当然A还可能包括零奇异值。
-在我们知道了什么是SVD后，接下来看一下SVD是怎么来的，在开始之前我们先介绍一下矩阵的四个基本子空间的基本性质。</p>
-<h3><strong>四个基本子空间</strong></h3>
-<p>设矩阵$A \in R^{m \times n}$，秩rank(A) = r，
-A的<em>行空间</em> $R(A^T)$ 为A 的行向量张成集合，
-A的<em>列空间</em> R(A)为A 的列向量的张成集合，
-A的的<em>零空间</em> N(A)为满足Ax = 0 的所有x 组成的集合，
-$A^T$的<em>零空间</em>$N(A^T)$ 为满足$A^Ty = 0$的所有y 组成的集合。
-四个基本子空间的维数分别为dim(R(A)) = r,dim($R(A^T)$) = r,dim(N(A)) = n-r,dim($N(A^T)$) = m - r,而且$R(A) \perp N(A^T)$，$R(A^T) \perp N(A)$。</p>
-<h4><strong>有关特征值的结论</strong></h4>
-<ul>
-<li>$AA^T$和$A^TA$具有相同的非零特征值，而且所有特征值均大于等于0</li>
-<li>$A = U \land U^T $为对称矩阵A的特征值分解（对称性保证特征向量正交），$\land$是对角线元素A的特征值的对角矩阵，U的列向量为对应的A的特征向量。</li>
-<li>rank(A) = r，则$A^TA$的正特征值有r个</li>
-</ul>
-<h2>SVD的由来</h2>
-<p>在矩阵A的行空间，我们选择一组标准正交基$v_1,v_2,\ldots,v_r$，经过A 变换，得到列空间的r个元素$u_1,u_2,\ldots,u_r$，我们希望变换后的$u_1,u_2,\ldots,u_r$也是正交的，所以我们在行空间选择的标准正交基就不能是任意的，它需要满足使得变换后的$u_1,u_2,\ldots,u_r$也正交。写成矩阵形式
-$$A[v_1,v_2,\ldots,v_r] = [u_1,u_2,\ldots,u_r]$$
-我们把$u_1,u_2,\ldots,u_r$单位化，设其长度分别为$\sigma_1,\sigma_2,\ldots,\sigma_r$，并记单位化后的向量重新记为$u_1,u_2,\ldots,u_r$，则
-$$A[v_1,v_2,\ldots,v_r] = [\sigma_1 u_1,\sigma_2 u_2,\ldots,\sigma_r u_r] = [u_1,u_2,\ldots,u_r]\left[ \begin{array}{cccc}
-\sigma_1 &amp; 0 &amp; 0 &amp; 0 \\
-0 &amp; \sigma_2 &amp; 0 &amp; 0 \\
-0 &amp; 0 &amp; \ldots &amp; 0 \\
-0 &amp; 0 &amp; 0 &amp; \sigma_r \end{array} \right]$$
-我们把零空间也考虑进来，记A的零空间的一组标准正交基$v_{r+1},v_{r+2},\ldots,v_n$，$A^T$的零空间的一组标准正交基为$u_{r+1},u_{r+2},\ldots,u_n$，则
-$$A[v_1,v_2,\ldots,v_r，v_{r+1},v_{r+2},\ldots,v_n]  = [\sigma_1 u_1,\sigma_2 u_2,\ldots,\sigma_r u_r,0,0,\ldots,0] $$
-$$ = [u_1,u_2,\ldots,u_r,u_{r+1},u_{r+2},\ldots,u_m]\left[ \begin{array}{ccccc}
-\sigma_1 &amp; 0 &amp; 0 &amp; 0 &amp; \quad \\
-0 &amp; \sigma_2 &amp; 0 &amp; 0 &amp; \quad \\
-0 &amp; 0 &amp; \ldots &amp; 0 &amp; \quad \\
-0 &amp; 0 &amp; 0 &amp; \sigma_r &amp; \quad \\
-\quad &amp; \quad &amp; \quad &amp; \quad &amp; \textbf{O}
-\end{array} \right]$$
-写成矩阵形式如下
-$$AV = U\Sigma,\mbox{即，}A = U \Sigma V^T$$
-什么样的U，V,$\Sigma$满足上面的要求呢？我们需要解出来。
-首先，左乘$A^T$,我们得到，
-$$A^TA = V \Sigma^TU^TU\Sigma V^T = V \Sigma^T \Sigma V^T $$
-由对称矩阵的特征值分解，我们可以知道，$\Sigma$中的$\sigma_1,\sigma_2,\ldots,\sigma_r$取$A^TA$的非零（即正）特征值的正平方根，也是做A正
-奇异值，的正V 的列向量取对应的特征向量。
-然后，右乘$A^T$,我们得到，
-$$AA^T = U\Sigma V^TV \Sigma^TU^T = U \Sigma \Sigma^T U^T $$
-由对称矩阵的特征值分解，我们可以知道，$\Sigma$中的$\sigma_1,\sigma_2,\ldots,\sigma_r$取$AA^T$的非零（即正）特征值正平方根，U的列向量取对应的特征向量。
-由于$AA^T$和$A^TA$具有相同的非零特征值，而且所有特征值均大于等于0，所以上述结论是成立的。</p>
-<h4><strong>再看SVD</strong></h4>
-<p>从上面的推导我们可以看出，</p>
-<ul>
-<li>V的前r列组成$R(A^T)$的标准正交基</li>
-<li>U的前r列组成$R(A)$的标准正交基</li>
-<li>V的后n-r列组成N(A)的标准正交基</li>
-<li>U的后m-r列组成$N(A^T)$的标准正交基</li>
-</ul>
-<p>我们把矩阵A的SVD展开</p>
-<p>\begin{eqnarray*}
-A &amp; = &amp; U \Sigma V^T \ &amp; = &amp; [u_1,u_2,\ldots,u_r,u_{r+1},u_{r+2},\ldots,u_m] \left[ \begin{array}{ccccc}
-\sigma_1 &amp; 0 &amp; 0 &amp; 0 &amp; \quad \\
-0 &amp; \sigma_2 &amp; 0 &amp; 0 &amp; \quad \\
-0 &amp; 0 &amp; \ldots &amp; 0 &amp; \quad \\
-0 &amp; 0 &amp; 0 &amp; \sigma_r &amp; \quad \\
-\quad &amp; \quad &amp; \quad &amp; \quad &amp; \textbf{O}
-\end{array} \right][v_1,v_2,\ldots,v_r，v_{r+1},v_{r+2},\ldots,v_n]^T \
-&amp; = &amp; \sigma_1 u_1v_1^T + \sigma_2 u_1v_1^T + \ldots + \sigma_r u_1v_1^T \
-&amp; = &amp; \sum_{i=1}^r \sigma_i u_iv_i^T
-\end{eqnarray*}</p>
-<p><strong>例</strong> 求矩阵A = $\left( \begin{array}{cc}
-4 &amp; 4 \\
--3 &amp; 3 \end{array} \right)$的奇异值分解。</p>
-<p><strong>解</strong> $A^TA = \left( \begin{array}{cc}
-25 &amp; 7 \\
-7 &amp; 25 \end{array} \right)$，特征值$\lambda_1 = 32, \lambda_2 = 18,$对应的单位正交向量分别为$\left( \begin{array}{c}
-\frac{1}{\sqrt{2}} \\
-\frac{1}{\sqrt{2}} \end{array} \right)$,
-$\left( \begin{array}{c}
-\frac{1}{\sqrt{2}} \\
-\frac{-1}{\sqrt{2}} \end{array} \right)$，
-所以 V = $\left( \begin{array}{cc}
-\frac{1}{\sqrt{2}} &amp; \frac{1}{\sqrt{2}} \\
-\frac{1}{\sqrt{2}} &amp; \frac{-1}{\sqrt{2}} \end{array} \right)$,
-$\Sigma = \left( \begin{array}{cc}
-\sqrt{32} &amp; 0 \\
-0 &amp; \sqrt{18} \end{array} \right)$.</p>
-<p>又$AV = \left( \begin{array}{cc}
-\frac{8}{\sqrt{2}} &amp; 0 \\
-0 &amp; \frac{-6}{\sqrt{2}} \end{array} \right)$.</p>
-<p>因此$U = \left( \begin{array}{cc}
-\frac{8}{\sqrt{2}}\frac{1}{\sqrt{32}} &amp; 0 \\
-0 &amp; \frac{-6}{\sqrt{2}}\frac{1}{\sqrt{18}} \end{array} \right) = \left( \begin{array}{cc}
-1 &amp; 0 \\
-0 &amp; -1 \end{array} \right)$</p>
-<p>所以$A = \left( \begin{array}{cc}
-1 &amp; 0 \\
-0 &amp; -1 \end{array} \right)\left( \begin{array}{cc}
-\sqrt{32} &amp; 0 \\
-0 &amp; \sqrt{18} \end{array} \right)\left( \begin{array}{cc}
-\frac{1}{\sqrt{2}} &amp; \frac{1}{\sqrt{2}} \\
-\frac{1}{\sqrt{2}} &amp; \frac{-1}{\sqrt{2}} \end{array} \right)$.</p>
-
-          
+其中，U是正交矩阵，其列向量是$ AA^T $的单位特征向量，V 也是正交矩阵，其列向量是对应的$A^TA$的单位特
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/02/22/矩阵的奇异值分解（SVD）/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -591,22 +478,18 @@ $\Sigma = \left( \begin{array}{cc}
       
         
           
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2>Quick Start</h2>
-<h3>Create a new post</h3>
-<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure></p>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3>Run server</h3>
-<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure></p>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3>Generate static files</h3>
-<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure></p>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3>Deploy to remote sites</h3>
-<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure></p>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
+          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick Start
+Create a new post
+1$ hexo new "My New Post"
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/02/17/hello-world/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -680,7 +563,7 @@ $\Sigma = \left( \begin{array}{cc}
         
           
             <div class="site-state-item site-state-posts">
-              <a href="/archives">
+              <a href="/">
                 <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">日志</span>
               </a>
@@ -689,6 +572,13 @@ $\Sigma = \left( \begin{array}{cc}
 
           
 
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
           
 
         </nav>
