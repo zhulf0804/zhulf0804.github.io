@@ -132,12 +132,12 @@ p.suojin{
 }
 
 .sidebar p{
-	margin-left: 250px;
+	margin-left: 150px;
 	margin-bottom: 10px;
 }
 .sidebar .left{
 	display: inline-block;
-	width: 100px;
+	width: 200px;
 	text-align: right;
 	margin-right: 12px;
 }
