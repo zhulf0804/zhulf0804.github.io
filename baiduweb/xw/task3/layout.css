@@ -1,0 +1,175 @@
+*{
+	margin: 0;
+	padding: 0;
+	font-size: 14px;
+}
+body{
+	padding: 20px;
+}
+
+
+/****float定位*****/
+
+.container{
+	background: #eee;
+	border: 1px solid #999;
+	padding: 20px;
+}
+/*  left */
+.container .left{
+	background: #fff;
+	float: left;
+	width: 160px;
+	padding: 20px;
+	border: 1px solid #999;
+}
+.container .left img,.container .right img{
+	width: 80px;
+	height: 80px;
+}
+.container .left .team-logo{
+	float: left;
+}
+
+.container .left .team-name{
+	margin-left: 100px;
+	font-size: 14px;
+	text-align: center;
+}
+
+/*  right  */ 
+.container .right{
+	background: #fff;
+	float: right;
+	width: 80px;
+	padding: 20px;
+	border: 1px solid #999;
+}
+.container .personal-logo{
+	margin-bottom: 14px;
+}
+.container .bottom-logo{
+	margin-bottom: 0;
+}
+.container .clear{
+	clear: both;
+}
+
+/*  middle  */
+.container .mid{
+	background: #fff;
+	margin-left: 220px;
+	margin-right: 140px;
+	padding: 20px;
+	border: 1px solid #999;
+}
+.container .mid .article{
+	margin-bottom: 40px;
+}
+.container .mid .bottom-article{
+	margin-bottom: 0;
+}
+.container .mid h2{
+	margin-bottom: 20px;
+}
+.container .mid .line{
+	line-height: 28px;
+	
+}
+
+
+
+
+/****position定位*****/
+
+/*
+.container-position{
+	background: #eee;
+	border: 1px solid #999;
+	padding: 20px;
+	margin-top: 50px;
+	position: relative;
+	
+}
+*/
+
+/***left**/
+/*
+.container-position .left{
+	background: #fff;
+	border: 1px solid #999;
+	padding: 20px;
+	width: 160px;
+	position: absolute;
+	left: 20px;
+	top: 20px;
+}
+.container-position .left img{
+	width: 80px;
+	height: 80px;
+}
+.container-position .left .team-logo{
+	position: absolute;
+	left: 20px;
+	top: 20px;
+}
+
+.container-position .left .team-name{
+	position: absolute;
+	top:20px;
+	right: 20px;
+	left: 120px;
+	font-size: 14px;
+	text-align: center;
+}
+*/
+
+/*middle*/
+/*
+.container-position .mid{
+	background: #fff;
+	border: 1px solid #999;
+	padding: 20px;
+	position: absolute;
+
+	left: 240px;
+	top: 20px;
+	right: 160px;
+}
+.container-position .mid .article{
+	margin-bottom: 40px;
+}
+.container-position .mid .bottom-article{
+	margin-bottom: 0;
+}
+.container-position .mid h2{
+	margin-bottom: 20px;
+}
+.container-position .mid .line{
+	line-height: 28px;
+	
+}
+*/
+
+/****right***/
+/*
+.container-position .right{
+	background: #fff;
+	border: 1px solid #999;
+	padding: 20px;
+	width: 80px;
+	position: absolute;
+	right: 20px;
+	top: 20px;
+}
+.container-position .right img{
+	width: 80px;
+	height: 80px;
+}
+.container-position .personal-logo{
+	margin-bottom: 14px;
+}
+.container-position .bottom-logo{
+	margin-bottom: 0;
+}
+*/
