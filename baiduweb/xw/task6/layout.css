@@ -367,6 +367,19 @@
 	font-style: normal;
 	
 }
+.right-bottom-content .bottom .right .sign1{
+	float: left;
+	margin-top: 12px;
+	margin-left: -30px;
+	height: 0px;
+}
+.right-bottom-content .bottom .right .sign2{
+	float: right;
+	margin-top: 28px;
+	margin-right: 60px;
+	height: 0px;
+}
+
 
 .left-top-content h2{
 	font-size: 42px;
