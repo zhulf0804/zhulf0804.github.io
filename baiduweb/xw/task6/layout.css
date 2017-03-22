@@ -93,9 +93,12 @@
 	color: #000;
 	font-size: 24px;
 	font-family: "Microsoft YaHei";
-	text-transform: Uppercase;
+	
+	text-decoration: underline;    
+	font-variant: small-caps;    /*关键样式*/
+	text-transform: capitalize;  /*关键样式*/  
 }
-.text p.big:first-letter{
+/*.text p.big:first-letter{
 	font-size: 1.5em;
 }
 .text .big:after{
@@ -103,7 +106,7 @@
 	display: block;
 	height: 1px;
 	background: #888686;
-}
+}*/
 .text .top-big{
 	margin-top: 10px;
 }
@@ -347,6 +350,13 @@
 	font-size: 16px;
 	color: #5a5b5b;
 	line-height: 28px;
+	letter-spacing: 2px;
+}
+.right-bottom-content .top li span{
+	color: #5a5b5b;
+	font-size: 12px;
+	font-style: italic;
+	font-family: SimSun;
 }
 .right-bottom-content .bottom{
 	margin-top: 36px;
@@ -355,7 +365,7 @@
 	color: #d45d5c;
 	font-size: 72px;
 	font-style: normal;
-	vertical-align: top;
+	
 }
 
 .left-top-content h2{
