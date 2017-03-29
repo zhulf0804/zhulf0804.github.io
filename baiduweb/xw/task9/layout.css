@@ -465,6 +465,10 @@ section.sta > div{
 	left: 122px;
 	top: 12px;
 }
+.sta .bg-1{
+
+        background: #43b29e;
+}
 .sta .bg-2{
 	
 	background: #388ac1;
