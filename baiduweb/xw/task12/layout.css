@@ -1,0 +1,151 @@
+*{
+	margin:  0;
+	padding:  0;
+}
+body{
+	padding: 20px;
+}
+table{
+	width: 400px;
+	margin: 0 auto;
+	border-collapse: collapse;
+	text-align: left;
+}
+
+table, td, th{
+	border: 1px solid #fff;
+}
+th{
+	background: black;
+	color: #fff;
+}
+tr:nth-child(even){
+	background: #ccc;
+}
+tr:nth-child(1), tr:nth-child(2), tr:nth-child(3){
+	color: #ff4938;
+}
+
+.input{
+	width: 400px;
+	margin: 40px auto;
+	text-align: center;
+}
+input{
+	width: 200px;
+	height: 30px;
+	transition: width 2s;
+}
+input:focus{
+	width: 400px;
+	box-shadow: 0 0 6px #75abf3 ;
+}
+
+.main{
+	width: 400px;
+	height: 200px;
+	margin: 40px auto;
+	position: relative; 
+	overflow: hidden;
+}
+
+.banner, .banner2{
+	box-sizing: border-box;
+	position: absolute;
+	left: 0;
+	top: 0;
+	overflow: hidden;
+	width: 1200px;
+	color: #fff;
+	font-size: 40px;
+	text-align: center;
+}
+.item{
+	width: 400px;
+	height: 200px;
+	float: left;
+	display: flex;
+}
+
+.item span{
+	margin: auto;
+}
+
+.item:nth-child(1){
+	background: black;
+}
+.item:nth-child(2){
+	background: #ccc;
+}
+.item:nth-child(3){
+	background: green;
+}
+
+.list{
+	position: absolute;;
+	bottom: 0;
+	right: 0;
+}
+.list li{
+	list-style: none;
+	float: left;
+}
+.list a{
+	display: inline-block;
+	text-decoration: none;
+	background: rgba(255,255,255,0.5);
+	color: #fff;
+	width: 20px;
+	height: 20px;
+	margin-left: 2px;
+	text-align: center;;
+	line-height: 20px;
+}
+
+#item1:target ~ .banner{
+	transition: left 1s;
+	-moz-transition: left 1s;	/* Firefox 4 */
+	-webkit-transition: left 1s;	/* Safari 和 Chrome */
+	-o-transition: left 1s;	/* Opera */
+	left: 0;
+}
+
+#item2:target ~ .banner{
+
+	transition: left 1s;
+	-moz-transition: left 1s;	/* Firefox 4 */
+	-webkit-transition: left 1s;	/* Safari 和 Chrome */
+	-o-transition: left 1s;	/* Opera */
+	left: -400px;
+}
+#item3:target ~ .banner{
+	transition: left 1s;
+	-moz-transition: left 1s;	/* Firefox 4 */
+	-webkit-transition: left 1s;	/* Safari 和 Chrome */
+	-o-transition: left 1s;	/* Opera */
+	left: -800px;
+}
+
+.banner2{
+	animation:myfirst 8s infinite;
+	-moz-animation:myfirst 8s infinite; /* Firefox */
+	-webkit-animation:myfirst 8s infinite; /* Safari and Chrome */
+	-o-animation:myfirst 8s infinite; /* Opera */
+}
+
+@keyframes myfirst
+{
+	0%   {left: 0;}
+	12.5%  {left: 0;}
+
+	25%  {left: -400px;}
+	37.5% {left: -400px;}
+
+	50%  {left: -800px;}
+	62.5% {left: -800px;}
+
+	75%  {left: -400px;}
+	87.5% {left: -400px;}
+
+	100%   {left: 0;}
+}
